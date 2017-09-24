@@ -1,5 +1,6 @@
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
+import org.opencv.core.Range;
 import org.opencv.imgcodecs.Imgcodecs;
 
 import java.util.HashMap;
@@ -22,6 +23,11 @@ public class FirstOpenCV {
 
     private static void test1() {
         Mat mat = Imgcodecs.imread("20170923154329.png");
+
+        Mat resultMat = mat.colRange(new Range(mat.cols() * 3 / 10, mat.cols()));
+        Imgcodecs.imwrite("70.png", resultMat);
+/*
+
         int changeCount = 0 ;
 //        Mat mat = Imgcodecs.imread("star.png");
         int num_rows = mat.rows();
@@ -54,7 +60,7 @@ public class FirstOpenCV {
         }
         Imgcodecs.imwrite("20170923154321.png", mat);
         System.out.println(mat);
-        System.out.println(changeCount);
+        System.out.println(changeCount);*/
     }
 
     public static void test2() {
