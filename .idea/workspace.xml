@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4bff834-2fc7-4861-8617-4dc9190d3c43" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/FirstOpenCV.class" afterPath="$PROJECT_DIR$/target/classes/FirstOpenCV.class" />
+    <list default="true" id="b4bff834-2fc7-4861-8617-4dc9190d3c43" name="Default" comment="第一张图片测试可以通过">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/FirstOpenCV.java" afterPath="$PROJECT_DIR$/src/main/java/FirstOpenCV.java" />
     </list>
@@ -29,8 +28,8 @@
       <file leaf-file-name="FirstOpenCV.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/FirstOpenCV.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="18" column="51" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
+            <state relative-caret-position="336">
+              <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -556,7 +555,7 @@
       <option name="presentableId" value="Default" />
       <updated>1506302907478</updated>
       <workItem from="1506302909976" duration="4128000" />
-      <workItem from="1506307066622" duration="12245000" />
+      <workItem from="1506307066622" duration="13072000" />
     </task>
     <task id="LOCAL-00001" summary="获取块">
       <created>1506311812717</created>
@@ -565,11 +564,18 @@
       <option name="project" value="LOCAL" />
       <updated>1506311812717</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="第一张图片测试可以通过">
+      <created>1506322831022</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1506322831022</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16373000" />
+    <option name="totallyTimeSpent" value="17200000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1378" height="744" extended-state="0" />
@@ -637,18 +643,15 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="获取块" />
-    <option name="LAST_COMMIT_MESSAGE" value="获取块" />
+    <MESSAGE value="第一张图片测试可以通过" />
+    <option name="LAST_COMMIT_MESSAGE" value="第一张图片测试可以通过" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/FirstOpenCV.java</url>
-          <line>68</line>
-          <properties />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/FirstOpenCV.java</url>
           <line>87</line>
@@ -772,8 +775,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/FirstOpenCV.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="18" column="51" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
+        <state relative-caret-position="336">
+          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
           <folding />
         </state>
       </provider>

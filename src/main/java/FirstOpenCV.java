@@ -26,7 +26,7 @@ public class FirstOpenCV {
     private static boolean test1() {
         Mat mat = Imgcodecs.imread("20170923154329.png");
         mat = mat.colRange(new Range(mat.cols() * 3 / 10, mat.cols()));
-        int changeCount = 0 ;
+//        int changeCount = 0 ;
         int num_rows = mat.rows();
         int num_col = mat.cols();
         RangePosition rangePosition = new RangePosition();
@@ -36,7 +36,7 @@ public class FirstOpenCV {
         for (int rowNum = 0; rowNum < num_rows; rowNum++) {
             boolean rowIsInARange = false;
             isRangeEnd = false;
-            inner:for (int colNum = 0; colNum < num_col; colNum++) {
+            for (int colNum = 0; colNum < num_col; colNum++) {
                 // 获取每个像素
                 double[] clone = mat.get(rowNum, colNum).clone();
                 if (isStarColor(clone)) {
@@ -52,8 +52,8 @@ public class FirstOpenCV {
                     clone[1] = 0;
                     clone[2] = 0;
                     mat.put(rowNum, colNum, clone);
-                    changeCount++;
-                    continue inner;
+//                    changeCount++;
+                    continue;
                 }
                 //除星星外的其他颜色全部置为白色
                 clone[0] = 255;
