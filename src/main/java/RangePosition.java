@@ -1,8 +1,15 @@
+import org.opencv.core.Mat;
+
 public class RangePosition {
     private Position startPosition;
     private Position endPosition;
 
-    private Position getEndPosition() {
+    public RangePosition() {
+        this.startPosition = new Position();
+        this.endPosition = new Position();
+    }
+
+    public Position getEndPosition() {
         return endPosition;
     }
 
@@ -10,7 +17,7 @@ public class RangePosition {
         this.endPosition = endPosition;
     }
 
-    private Position getStartPosition() {
+    public Position getStartPosition() {
 
         return startPosition;
     }
@@ -23,29 +30,35 @@ public class RangePosition {
         return positionType.compareAndSet(this, val);
     }
 
+    public Mat cutRange(Mat mat) {
+       return mat.colRange(this.getStartPosition().getColNum(), this.getEndPosition().getColNum() + 1)
+            .rowRange(this.getStartPosition().getRowNum(),this.getEndPosition().getRowNum() + 1)
+        ;
+    }
+
     public enum PositionType{
-        START_X {
+        START_ROW {
             RangePosition compareAndSet(RangePosition rangePosition, int val) {
-                if (val < rangePosition.getStartPosition().getRowNum()) {
+                if (rangePosition.getStartPosition().getRowNum() == 0 || val < rangePosition.getStartPosition().getRowNum()) {
                     rangePosition.getStartPosition().setRowNum(val);
                 }
                 return rangePosition;
             }
-        },END_X {
+        },END_ROW {
             RangePosition compareAndSet(RangePosition rangePosition, int val) {
                 if (val > rangePosition.getEndPosition().getRowNum()) {
                     rangePosition.getEndPosition().setRowNum(val);
                 }
                 return rangePosition;
             }
-        },START_Y {
+        },START_COL {
             RangePosition compareAndSet(RangePosition rangePosition, int val) {
-                if (val < rangePosition.getStartPosition().getColNum()) {
+                if (rangePosition.getStartPosition().getColNum() == 0 || val < rangePosition.getStartPosition().getColNum()) {
                     rangePosition.getStartPosition().setColNum(val);
                 }
                 return rangePosition;
             }
-        },END_Y {
+        },END_COL {
             RangePosition compareAndSet(RangePosition rangePosition, int val) {
                 if (val > rangePosition.getEndPosition().getColNum()) {
                     rangePosition.getEndPosition().setColNum(val);

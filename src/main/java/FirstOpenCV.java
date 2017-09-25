@@ -9,13 +9,11 @@ public class FirstOpenCV {
     static {  
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         //注意程序运行的时候需要在VM option添加该行 指明opencv的dll文件所在路径  
-        //-Djava.library.path=$PROJECT_DIR$\opencv\x64  
+        //-Djava.library.path=$PROJECT_DIR$\opencv\x64
     }
 
     public static void main(String[] args) {
         test1();
-//        test2();
-//        test3();
     }
 
     private static void test1() {
@@ -28,16 +26,21 @@ public class FirstOpenCV {
         int num_col = mat.cols();
         RangePosition rangePosition = new RangePosition();
         List<Mat> matList = new ArrayList<Mat>();
+        boolean startedCollectRange = false;
+        boolean isRangeEnd = false;
         for (int rowNum = 0; rowNum < num_rows; rowNum++) {
-            boolean isInARange = false;
+            boolean rowIsInARange = false;
+            isRangeEnd = false;
             inner:for (int colNum = 0; colNum < num_col; colNum++) {
                 // 获取每个像素
                 double[] clone = mat.get(rowNum, colNum).clone();
                 if (isStarColor(clone)) {
-                    rangePosition.compareStartAndSet(RangePosition.PositionType.START_X,colNum);
-                    rangePosition.compareStartAndSet(RangePosition.PositionType.END_X,colNum);
-                    rangePosition.compareStartAndSet(RangePosition.PositionType.START_Y,rowNum);
-                    rangePosition.compareStartAndSet(RangePosition.PositionType.END_Y,rowNum);
+                    rowIsInARange = true;
+                    startedCollectRange = true;
+                    rangePosition.compareStartAndSet(RangePosition.PositionType.START_ROW,rowNum);
+                    rangePosition.compareStartAndSet(RangePosition.PositionType.END_ROW,rowNum);
+                    rangePosition.compareStartAndSet(RangePosition.PositionType.START_COL,colNum);
+                    rangePosition.compareStartAndSet(RangePosition.PositionType.END_COL,colNum);
 
                     // 红色范围,全部设置为黑色,
                     clone[0] = 0;
@@ -52,8 +55,21 @@ public class FirstOpenCV {
                 clone[2] = 255;
                 mat.put(rowNum, colNum, clone);
             }
+            if(!rowIsInARange && startedCollectRange){
+                isRangeEnd = true;
+            }
+
+            if (isRangeEnd) {
+                matList.add(rangePosition.cutRange(mat));
+                rangePosition = new RangePosition();
+                startedCollectRange = false;
+            }
         }
-        Imgcodecs.imwrite("000001.png", mat);
+        for (int i = 0; i < matList.size(); i++) {
+            Imgcodecs.imwrite("0"+i+".png", matList.get(i));
+        }
+
+//        Imgcodecs.imwrite("000001.png", mat);
         System.out.println(changeCount);
     }
 
