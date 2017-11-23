@@ -25,12 +25,13 @@ public class FirstOpenCV {
 
     private static boolean test1() {
         Mat mat = Imgcodecs.imread("20170923154329.png");
+//        Mat mat = Imgcodecs.imread("test-2.png");
         mat = mat.colRange(new Range(mat.cols() * 3 / 10, mat.cols()));
-//        int changeCount = 0 ;
+        int changeCount = 0 ;
         int num_rows = mat.rows();
         int num_col = mat.cols();
         RangePosition rangePosition = new RangePosition();
-//        List<Mat> matList = new ArrayList<Mat>();
+        List<Mat> matList = new ArrayList<Mat>();
         boolean startedCollectRange = false;
         boolean isRangeEnd = false;
         for (int rowNum = 0; rowNum < num_rows; rowNum++) {
@@ -52,7 +53,7 @@ public class FirstOpenCV {
                     clone[1] = 0;
                     clone[2] = 0;
                     mat.put(rowNum, colNum, clone);
-//                    changeCount++;
+                    changeCount++;
                     continue;
                 }
                 //除星星外的其他颜色全部置为白色
@@ -69,16 +70,16 @@ public class FirstOpenCV {
                 if (isFiveFlag(rangePosition.cutRange(mat),mat)) {
                     return true;
                 }
-//                matList.add(rangePosition.cutRange(mat));
+                matList.add(rangePosition.cutRange(mat));
                 rangePosition = new RangePosition();
                 startedCollectRange = false;
             }
         }
-//        for (int i = 0; i < matList.size(); i++) {
-//            Imgcodecs.imwrite("0"+i+".png", matList.get(i));
-//        }
+        for (int i = 0; i < matList.size(); i++) {
+            Imgcodecs.imwrite("0"+i+".png", matList.get(i));
+        }
 //        Imgcodecs.imwrite("000001.png", mat);
-//        System.out.println(changeCount);
+        System.out.println(changeCount);
         return false;
     }
 
@@ -116,8 +117,8 @@ public class FirstOpenCV {
                 startedCollectRange = false;
             }
         }
-//        System.out.println("starMatList: " + starMatList.size());
-//        System.out.println("blackCount: " + blackCount);
+        System.out.println("starMatList: " + starMatList.size());
+        System.out.println("blackCount: " + blackCount);
         if (starMatList.size() < 5) {
             return false;
         }
@@ -147,8 +148,8 @@ public class FirstOpenCV {
             }
         }
         Imgcodecs.imwrite("1"+ count++ +".png",starMat);
-//        System.out.println("starColorCount:" +starColorCount + " totalCount:" + totalCount + " ratio:" +ratio );
-//        System.out.println(0.0 * starColorCount * 100 / (totalCount * ratio));
+        System.out.println("starColorCount:" +starColorCount + " totalCount:" + totalCount + " ratio:" +ratio );
+        System.out.println(0.0 * starColorCount * 100 / (totalCount * ratio));
         return starColorCount * 100 >= totalCount * ratio;
     }
 
